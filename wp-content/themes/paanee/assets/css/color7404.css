@@ -1,0 +1,13 @@
+/* Theme Color CSS  */
+
+:root {
+    --theme_primary: #0077C0;
+    --theme_dark: #0F141E;
+}
+
+.theme_color {
+    color: var(--theme_primary);
+}
+.theme_bg {
+    background-color: var(--theme_primary);
+}
