@@ -12,62 +12,62 @@
  * Tested up to: 5.0
  * Requires PHP: 7.2
 */
+
 .wp-caption {
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .wp-caption-text {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .screen-reader-text {
-	margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .gallery-caption {
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .bypostauthor {
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .alignleft {
-	float: left;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	max-width: 100%;
-	width: unset !important;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  max-width: 100%;
+  width: unset !important;
 }
 
 .alignright {
-	float: right !important;
-	margin-bottom: 20px;
-	margin-left: 20px;
-	max-width: 100%;
-	width: unset !important;
+  float: right !important;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  max-width: 100%;
+  width: unset !important;
 }
 
 .aligncenter {
-	display: block;
-	margin: 0 auto 20px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
 .col-md-4 .funfact-meta > i {
-	right: 27px;
+  right: 27px;
 }
 
 .mycustom-pricing {
-	background-color: #090909 !important;
+  background-color: #090909 !important;
 }
 
 .on-hover {
-	display: none;
-	animation: fadeOut 0.5s;
+  display: none;
+  animation: fadeOut 0.5s;
 }
 
 .hver:hover .on-hover {
-	display: block;
-	animation: fadeIn 0.5s;
+  display: block;
+  animation: fadeIn 0.5s;
 }
-

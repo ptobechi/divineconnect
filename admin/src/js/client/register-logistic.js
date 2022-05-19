@@ -49,7 +49,7 @@ $("#register-logistics").submit(function (event) {
                 document.getElementById("email").scrollIntoView();
                 document.getElementById("email_msg").textContent = "Email address already exists";
                 $("#submit_logistics").prop("disabled", false);
-                $("#submit_logistics").html('Submit');
+                $("#submit_logistics").html('<i class="fa fa-circle-o-notch fa-spin"></i> ...');
                 return
             } else {
                 // alert("Registration Failed");
@@ -79,7 +79,7 @@ $("#track_logistics").submit(function (event) {
 
     // disabled the submit button
     $("#track_package").prop("disabled", true);
-    $("#track_package").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
+    $("#track_package").html('<i class="fa fa-circle-o-notch fa-spin"></i> ...');
 
     $.ajax({
         url: "admin/PHP/logisticsController.php",
@@ -93,6 +93,7 @@ $("#track_logistics").submit(function (event) {
                 const label_div = document.getElementById("tracking_modal");
                 label_div.innerHTML += data;
                 $("#track_package").prop("disabled", false);
+                $("#track_package").html('<i class="fa fa-search"></i>');
             } else {
 
                 // alert("Registration Failed");
