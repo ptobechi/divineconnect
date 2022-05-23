@@ -28,5 +28,10 @@ if($_POST["action"] == "fetch"){
     $obj->getPackage($tracking_id);
 }
 
+if($_POST["action"] == "fetch_all"){
+    
+    $obj->getAllRegisteredPackage();
+}
+
 
 ?>

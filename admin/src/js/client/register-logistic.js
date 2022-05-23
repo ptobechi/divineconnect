@@ -69,6 +69,8 @@ $("#register-logistics").submit(function (event) {
 $("#track_logistics").submit(function (event) {
     event.preventDefault();
 
+    const label_div = document.getElementById("tracking_modal");
+    label_div.innerHTML = "";
     //initialize form variables
     let tracking_id = document.getElementById("tracking_id").value;
 
@@ -90,7 +92,7 @@ $("#track_logistics").submit(function (event) {
             console.log(data);
             if (data != 0) {
                 $('#\\#myModal').modal('show');
-                const label_div = document.getElementById("tracking_modal");
+
                 label_div.innerHTML += data;
                 $("#track_package").prop("disabled", false);
                 $("#track_package").html('<i class="fa fa-search"></i>');
@@ -108,4 +110,29 @@ $("#track_logistics").submit(function (event) {
     });
 
 });
+
+(function getAllPackage() {
+
+    let data = {
+        action: "fetch_all"
+    }
+
+    $.ajax({
+        url: "PHP/logisticsController.php",
+        method: "POST",
+        enctype: 'multipart/form-data',
+        data: data,
+        success: function (data) {
+            const label_div = document.getElementById("allPackage");
+            label_div.innerHTML = "";
+            console.log(data);
+            label_div.innerHTML += data;
+
+        },
+        error: function (e) {
+            $("#track_package").prop("disabled", false);
+            $("#track_package").html('Submit');
+        }
+    });
+})();
 

@@ -61,24 +61,15 @@ class Logistics extends Database{
                 echo "
                     <div class='container'>
                         <div class='row'>
-                            <div class='col-6'>
+                            <div class='col-12'>
                                 <ul type='none'>
-                                    <li class='left'>Tracking Id:</li>
-                                    <li class='left'>Client:</li>
-                                    <li class='left'>Carrier:</li>
+                                    <li class='left'><span class='text-primary' style='font-size:20px'>Tracking Id: </span>#DVNCONN-$row[orderid]</li>
+                                    <li class='left'><span class='text-primary' style='font-size:20px'>Client: </span>$row[s_name]</li>
+                                    <li class='left'><span class='text-primary' style='font-size:20px'>Carrier:</span> $method</li>
                                     <li class='left'>
-                                        <h6>Current Status</h6>
+                                        <h6 class='text-danger'>Current Status: $status</h6>
                                     </li>
                     
-                                </ul>
-                            </div>
-                            <div class='col-6'>
-                                <ul class='right' type='none'>
-                                    <li class='right'>#DVNCONN-$row[orderid]</li>
-                                    <li class='right'>$row[s_name]</li>
-                                    <li class='right'>$row[orderid]</li>
-                                    <li class='right'>$method</li>
-                                    <li class='right'>$status</li>
                                 </ul>
                             </div>
                         </div>
@@ -100,7 +91,59 @@ class Logistics extends Database{
                 ";
             }
         }else{
-            echo "404";
+            echo "Invalid Tracking no.";
         }
+    }
+
+    public function getAllRegisteredPackage(){
+        $sql = "SELECT * FROM logistics";
+        $query = $this->connect()->query($sql);
+        $num = $query->num_rows;;
+        if($num > 0){
+            while($row = $query->fetch_assoc()){
+                if($row["package_status"] == "0"){
+                    $status = "In transit";
+                }elseif($row["package_status"] == "1"){
+                    $status = "Ready for pick-up";
+                }elseif ($row["package_status"] == "2") {
+                    $status = "Awaiting Pickup"; 
+                }elseif ($row["package_status"] == "3") {
+                    $status = "Package Delivered and Cleared"; 
+                }
+                echo "
+                    <tr>
+                        <td class='ps-0'>
+                            <a href='edit-shipment.html?id=$row[orderid]'
+                                class='text-dark fw-bolder text-hover-primary mb-1 fs-6'>$row[orderid]</a>
+                        </td>
+                        <td>
+                            <span class='text-dark fw-bolder d-block fs-6'>$row[s_name]</span>
+                        </td>
+                        <td>
+                            <span class='text-dark fw-bolder d-block fs-6'>$row[date]</span>
+                        </td>
+                        <td>
+                            <select class='form-select mb-2' data-control='select2'
+                                data-hide-search='true' data-placeholder='Select an option'
+                                name='shipping_metho' id='shipping_method'>
+                                <option value='0'>$status</option>
+                                <option value='1'>Ready for pick-up</option>
+                                <option value='2'>Awaiting Pickup</option>
+                                <option value='3'>Package Delivered and Cleared</option>
+                            </select>
+                        </td>
+                        <td class='text-end'>
+                            <a class='btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px'>
+                                <span class='fa fa-check text-success'></span>
+                            </a>
+                        </td>
+                    </tr>
+                ";
+
+            }
+        }else{
+            echo "No Package."; 
+        }
+
     }
 }
